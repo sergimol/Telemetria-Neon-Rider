@@ -8,9 +8,9 @@ public class TrackerEvent
 {
     EventType tipo;
     long timeStamp; //  DateTimeOffset.Now.ToUnixTimeSeconds();
-    int id_sesion;
+    long id_sesion;
 
-    public TrackerEvent(EventType e, int id)
+    public TrackerEvent(EventType e, long id)
     {
         tipo = e;
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();

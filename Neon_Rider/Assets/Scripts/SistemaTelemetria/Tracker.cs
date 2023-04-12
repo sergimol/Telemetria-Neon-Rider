@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Tracker : MonoBehaviour
 {
     public static Tracker instance = null;
     StreamWriter createStream;
-    int sessionId;
+    long sessionId;
     List<TrackerEvent> eventos;
 
     void Awake()
@@ -27,7 +28,7 @@ public class Tracker : MonoBehaviour
 
     private void Init()
     {
-        sessionId = 0;
+        sessionId = AnalyticsSessionInfo.sessionId;
         eventos = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
         eventos.Add(new TrackerEvent(EventType.INICIO, sessionId));
