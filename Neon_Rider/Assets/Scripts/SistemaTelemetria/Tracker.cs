@@ -10,7 +10,7 @@ public class Tracker : MonoBehaviour
     public static Tracker instance = null;
     StreamWriter createStream;
     long sessionId;
-    List<TrackerEvent> eventos;
+    List<TrackerEvent> eventsBuff;
 
     void Awake()
     {
@@ -29,25 +29,25 @@ public class Tracker : MonoBehaviour
     private void Init()
     {
         sessionId = AnalyticsSessionInfo.sessionId;
-        eventos = new();
+        eventsBuff = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
-        AddEvent(EventType.INICIO);
+        AddEvent(EventType.INICIO, new possibleVar{});
     }
 
     private void OnDestroy()
     {
         if(instance = this)
         {
-            AddEvent(EventType.FIN);
+            AddEvent(EventType.FIN, new possibleVar{});
             Post();
 
             createStream.Close();
         }
     }
 
-    public void AddEvent(EventType t)
+    public void AddEvent(EventType t, possibleVar pV)
     {
-        eventos.Add(new TrackerEvent(t, sessionId));
+        eventsBuff.Add(new TrackerEvent(t, sessionId, pV));
     }
 
     public void TrackCompletable(string s, TrackerEvent e)
@@ -59,11 +59,11 @@ public class Tracker : MonoBehaviour
     {
         using (StreamWriter writer = createStream)
         {
-            foreach(TrackerEvent e in eventos)
+            foreach(TrackerEvent e in eventsBuff)
             {
                 await writer.WriteLineAsync("{" + e.ToJson() + "},");   // !!! Cambiarlo por llamada a persistencia             
             }
-            eventos.Clear();
+            eventsBuff.Clear();
         }
     }
 }
