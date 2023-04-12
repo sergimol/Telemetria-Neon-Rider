@@ -31,18 +31,23 @@ public class Tracker : MonoBehaviour
         sessionId = AnalyticsSessionInfo.sessionId;
         eventos = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
-        eventos.Add(new TrackerEvent(EventType.INICIO, sessionId));
+        AddEvent(EventType.INICIO);
     }
 
     private void OnDestroy()
     {
         if(instance = this)
         {
-            eventos.Add(new TrackerEvent(EventType.FIN, sessionId));
+            AddEvent(EventType.FIN);
             Post();
 
             createStream.Close();
         }
+    }
+
+    public void AddEvent(EventType t)
+    {
+        eventos.Add(new TrackerEvent(t, sessionId));
     }
 
     public void TrackCompletable(string s, TrackerEvent e)
