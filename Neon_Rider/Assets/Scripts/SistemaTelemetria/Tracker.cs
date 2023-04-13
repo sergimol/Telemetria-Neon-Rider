@@ -36,7 +36,7 @@ public class Tracker : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(instance = this)
+        if(instance == this)
         {
             AddEvent(EventType.FIN, new possibleVar{});
             Post();

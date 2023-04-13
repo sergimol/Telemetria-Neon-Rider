@@ -22,6 +22,9 @@ public class JSONSerializer : ISerializer
             case EventType.MUERTEJUGADOR: case EventType.BLOQUEOBALA:
                 aux += ", \"Pos\": \"" + e.getVar().pos.ToString() + "\"";
                 break;
+            case EventType.INICIOSALA: case EventType.FINSALA:
+                aux += ", \"RoomId\": \"" + e.getVar().roomId.ToString() + "\"";
+                break;
         }
         return aux;
     }

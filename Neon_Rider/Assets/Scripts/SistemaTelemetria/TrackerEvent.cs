@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EventType { INICIO, FIN, NUEVONIVEL, NIVELCOMPLETADO, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
+public enum EventType { INICIO, FIN, INICIOSALA, FINSALA, INICIONIVEL, FINNIVEL, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
 public struct possibleVar
 {
     public Vector2? pos;
