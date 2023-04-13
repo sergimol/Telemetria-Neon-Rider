@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EventType { INICIO, FIN, NUEVONIVEL, INICIOPAUSA, FINPAUSA, NIVELCOMPLETADO, GOLPE, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
+public enum EventType { INICIO, FIN, NUEVONIVEL, NIVELCOMPLETADO, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
 public struct possibleVar
 {
     public Vector2? pos;
@@ -15,23 +15,35 @@ public class TrackerEvent
     //Variables comunes
     EventType type; 
     long timeStamp;
-    long sessionId;     //Esto habra que quitarlo de aqui cuando pongamos la persistencia bien
 
     //Variables distintas según tipo
     possibleVar pVar;
 
-    public TrackerEvent(EventType e, long id, possibleVar pV)
+    public TrackerEvent(EventType e, possibleVar pV)
     {
         type = e;
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
-        sessionId = id;
         pVar = pV;
     }
 
     public string ToJson()
     {
-        string aux = "\"TimeStamp\": \"" + timeStamp.ToString() + "\", \"SessionId\": \"" +
-            sessionId.ToString() + "\", \"EventType\": \"" + type.ToString() + "\"";    // Añadir otros atributos
-        return aux;
+        JSONSerializer serializer = new JSONSerializer();
+        return serializer.Serialize(this);
+    }
+
+    public EventType GetType()
+    {
+        return type;
+    }
+
+    public long getTimeStamp()
+    {
+        return timeStamp;
+    }
+
+    public possibleVar getVar()
+    {
+        return pVar;
     }
 }

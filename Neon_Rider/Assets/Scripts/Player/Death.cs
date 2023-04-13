@@ -25,6 +25,7 @@ public class Death : MonoBehaviour
     {
         if (active)
         {
+            Tracker.instance.AddEvent(EventType.MUERTEJUGADOR, new possibleVar { pos = transform.position });
             AudioManager.instance.StopAllSFX();
             Instantiate(muerto, transform.position, Quaternion.identity);
             Destroy(this.gameObject);  

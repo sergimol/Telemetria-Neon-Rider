@@ -47,7 +47,7 @@ public class Tracker : MonoBehaviour
 
     public void AddEvent(EventType t, possibleVar pV)
     {
-        eventsBuff.Add(new TrackerEvent(t, sessionId, pV));
+        eventsBuff.Add(new TrackerEvent(t, pV));
     }
 
     public void TrackCompletable(string s, TrackerEvent e)
@@ -65,5 +65,10 @@ public class Tracker : MonoBehaviour
             }
             eventsBuff.Clear();
         }
+    }
+
+    public long getSessionId()
+    {
+        return sessionId;
     }
 }

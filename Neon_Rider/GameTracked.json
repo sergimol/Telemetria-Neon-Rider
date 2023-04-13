@@ -1,2 +1,4 @@
-{"TimeStamp": "1681292843", "SessionId": "8228854743561122054", "EventType": "INICIO"},
-{"TimeStamp": "1681292845", "SessionId": "8228854743561122054", "EventType": "FIN"},
+{"TimeStamp": "1681398352", "SessionId": "5534669178790234542", "EventType": "INICIO"},
+{"TimeStamp": "1681398367", "SessionId": "5534669178790234542", "EventType": "MUERTEJUGADOR", "Pos": "(54.13, 4.42)"},
+{"TimeStamp": "1681398371", "SessionId": "5534669178790234542", "EventType": "MUERTEJUGADOR", "Pos": "(61.68, 11.59)"},
+{"TimeStamp": "1681398379", "SessionId": "5534669178790234542", "EventType": "FIN"},
