@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>MUERTEJUGADOR</x_type>
-  <x_time>1681490344</x_time>
-  <x_enemyId />
-  <x_roomId />
-  <x_pos />
-</DataXmlObject>

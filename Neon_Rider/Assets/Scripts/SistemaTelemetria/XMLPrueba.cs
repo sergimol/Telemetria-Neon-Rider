@@ -70,23 +70,27 @@ public class XMLPrueba : MonoBehaviour
     void Start()
     {
 
-        string a = "a";
-        string.IsNullOrEmpty(a);
+        //TrackerEvent e = new TrackerEvent("Muerte Jugador", new possibleVar { pos = new Vector2(1, 1), roomId = 10, enemyId = 20 });
 
-        TrackerEvent e = new TrackerEvent("Muerte Jugador",  new possibleVar {pos = new Vector2(1,1)});
+        //DataXmlObject dataXml = new DataXmlObject
+        //{
+        //    x_type = e.GetType().ToString(),
+        //    x_time = e.getTimeStamp().ToString(),
+        //    x_enemyId = e.getVar().enemyId.ToString(),
+        //    x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y),
+        //    x_roomId = e.getVar().roomId.ToString()
+        //};
+        //Debug.Log(e.getVar().roomId.ToString());
+        //Debug.Log(e.getVar().enemyId.ToString());
 
-        DataXmlObject dataXml = new DataXmlObject
-        {
-            x_type = e.GetType().ToString(),
-            x_time = e.getTimeStamp().ToString(),
-            x_enemyId = e.getVar().enemyId.ToString(),
-            x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y),
-            x_roomId =e.getVar().roomId.ToString() 
-        };
+        //XmlSerializer serializer = new XmlSerializer(typeof(DataXmlObject));
+        //xmlStream = new StreamWriter("Prueba.xml");
+        //serializer.Serialize(xmlStream, dataXml);
 
-        XmlSerializer serializer = new XmlSerializer(typeof(DataXmlObject));
-        xmlStream = new StreamWriter("Prueba.xml");
-        serializer.Serialize(xmlStream, dataXml);
+        //xmlVector2 vector = new xmlVector2(2,2);
+        //XmlSerializer serializer2 = new XmlSerializer(typeof(xmlVector2));
+        //xmlStream = new StreamWriter("xmlVector.xml");
+        //serializer2.Serialize(xmlStream, vector);
 
     }
 

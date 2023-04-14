@@ -9,8 +9,8 @@ using System.IO;
 //Clase auxiliar para serializar Vector2
 public class xmlVector2
 {
-    string x;
-    string y;
+    public string x;
+    public string y;
 
     public bool IsEmpty()
     {
@@ -40,13 +40,14 @@ public class DataXmlObject
 
     // Por cada variable de evento hay que espeficiar si se debe omitir en la serializacion cuando es null
     [XmlIgnore]
+    public bool ShouldSerializePos { get { return x_pos.IsEmpty(); } }
+    [XmlIgnore]
     public bool ShouldSerializeEnemyId { get { return !string.IsNullOrEmpty(x_enemyId); } }
 
     [XmlIgnore]
     public bool ShouldSerializeRoomId { get { return !string.IsNullOrEmpty(x_roomId); } }
 
-    [XmlIgnore]
-    public bool ShouldSerializePos { get { return x_pos.IsEmpty(); } }
+
 
 }
 
@@ -79,8 +80,10 @@ public class XMLSerializer : ISerializer
                 dataXml.x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y);
                 break;
             case "Inicio Sala":
+                dataXml.x_roomId = e.getVar().roomId.ToString();
+                break;
             case "Fin Sala":
-                dataXml.x_roomId = e.getVar().enemyId.ToString();
+                dataXml.x_roomId = e.getVar().roomId.ToString();
                 break;
         }
 

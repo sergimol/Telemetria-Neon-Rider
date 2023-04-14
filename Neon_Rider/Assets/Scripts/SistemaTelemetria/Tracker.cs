@@ -8,7 +8,8 @@ using UnityEngine.Analytics;
 public class Tracker : MonoBehaviour
 {
     public static Tracker instance = null;
-    StreamWriter createStream;
+    StreamWriter createStream_json;
+    StreamWriter createStream_xml;
     long sessionId;
     List<TrackerEvent> eventsBuff;
 
@@ -23,6 +24,7 @@ public class Tracker : MonoBehaviour
 
     TrackerConfig config;
     JSONSerializer serializerJSON;
+    XMLSerializer serializerXML;
 
     void Awake()
     {
@@ -42,9 +44,11 @@ public class Tracker : MonoBehaviour
     {
         config = GetComponent<TrackerConfig>();
         serializerJSON = GetComponent<JSONSerializer>();
+        serializerXML = GetComponent<XMLSerializer>();
         sessionId = AnalyticsSessionInfo.sessionId;
         eventsBuff = new();
-        createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
+        createStream_json = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
+        createStream_xml = new StreamWriter("GameTracked.xml"); // !!! Cambiarlo por llamada a la persistencia
         AddEvent("Inicio", new possibleVar { });
     }
 
@@ -66,7 +70,8 @@ public class Tracker : MonoBehaviour
             AddEvent("Fin", new possibleVar { });
             Post();
 
-            createStream.Close();
+            createStream_json.Close();
+            createStream_xml.Close();
         }
     }
 
@@ -90,7 +95,12 @@ public class Tracker : MonoBehaviour
             if (serializeInJSON)
             {
                 string ser = await serializerJSON.Serialize(e);
-                await createStream.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia
+                await createStream_json.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia
+            }
+            if (serializeInXML)
+            {
+                string ser = await serializerXML.Serialize(e);
+                await createStream_xml.WriteLineAsync(ser);   // !!! Cambiarlo por llamada a persistencia
             }
         }
         eventsBuff.Clear();

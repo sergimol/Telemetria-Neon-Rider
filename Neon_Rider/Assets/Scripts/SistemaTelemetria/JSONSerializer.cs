@@ -25,6 +25,8 @@ public class JSONSerializer : ISerializer
                 aux += ", \"Pos\": \"" + e.getVar().pos.ToString() + "\"";
                 break;
             case "Inicio Sala":
+                aux += ", \"RoomId\": \"" + e.getVar().roomId.ToString() + "\"";
+                break;
             case "Fin Sala":
                 aux += ", \"RoomId\": \"" + e.getVar().roomId.ToString() + "\"";
                 break;
