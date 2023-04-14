@@ -12,6 +12,12 @@ public class Tracker : MonoBehaviour
     long sessionId;
     List<TrackerEvent> eventsBuff;
 
+    [SerializeField]    //Espaciado entre posts
+    float timeBetweenPosts;
+    float tSinceLastPost = 0;
+
+    public JSONSerializer serializer;
+
     void Awake()
     {
         if (instance == null)
@@ -31,14 +37,25 @@ public class Tracker : MonoBehaviour
         sessionId = AnalyticsSessionInfo.sessionId;
         eventsBuff = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
-        AddEvent(EventType.INICIO, new possibleVar{});
+        AddEvent(EventType.INICIO, new possibleVar { });
+    }
+
+    private void Update()
+    {
+        if (tSinceLastPost > timeBetweenPosts)
+        {
+            Post();
+            tSinceLastPost = 0;
+        }
+        else
+            tSinceLastPost += Time.deltaTime;
     }
 
     private void OnDestroy()
     {
-        if(instance == this)
+        if (instance == this)
         {
-            AddEvent(EventType.FIN, new possibleVar{});
+            AddEvent(EventType.FIN, new possibleVar { });
             Post();
 
             createStream.Close();
@@ -57,14 +74,13 @@ public class Tracker : MonoBehaviour
 
     public async void Post()
     {
-        using (StreamWriter writer = createStream)
+        foreach (TrackerEvent e in eventsBuff)
         {
-            foreach(TrackerEvent e in eventsBuff)
-            {
-                await writer.WriteLineAsync("{" + e.ToJson() + "},");   // !!! Cambiarlo por llamada a persistencia             
-            }
-            eventsBuff.Clear();
+            string ser = serializer.Serialize(e);
+            await createStream.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia             
         }
+        eventsBuff.Clear();
+
     }
 
     public long getSessionId()
