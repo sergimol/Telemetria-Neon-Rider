@@ -72,7 +72,7 @@ public class XMLPrueba : MonoBehaviour
         string a = "a";
         string.IsNullOrEmpty(a);
 
-        TrackerEvent e = new TrackerEvent(EventType.MUERTEJUGADOR,  new possibleVar {pos = new Vector2(1,1)});
+        TrackerEvent e = new TrackerEvent("Muerte Jugador",  new possibleVar {pos = new Vector2(1,1)});
 
         DataXmlObject dataXml = new DataXmlObject
         {
