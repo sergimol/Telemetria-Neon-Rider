@@ -84,7 +84,7 @@ public class Tracker : MonoBehaviour
         {
             if (serializeInJSON)
             {
-                string ser = serializerJSON.Serialize(e);
+                string ser = await serializerJSON.Serialize(e);
                 await createStream.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia
             }
         }

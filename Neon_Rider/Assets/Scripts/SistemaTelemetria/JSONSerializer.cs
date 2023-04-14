@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 public class JSONSerializer : ISerializer 
 {
-    public override string Serialize(TrackerEvent e)
+    public override async Task<string> Serialize(TrackerEvent e)
     {
         EventType t = e.GetType();
         // Atributos comunes a todos los eventos
@@ -26,6 +27,6 @@ public class JSONSerializer : ISerializer
                 aux += ", \"RoomId\": \"" + e.getVar().roomId.ToString() + "\"";
                 break;
         }
-        return aux;
+        return await Task.FromResult(aux);
     }
 }
