@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-public class JSONSerializer : ISerializer 
+public class JSONSerializer : ISerializer
 {
     public override async Task<string> Serialize(TrackerEvent e)
     {
@@ -20,6 +20,8 @@ public class JSONSerializer : ISerializer
                 break;
             case "Muerte Jugador":
             case "Bloqueo":
+            case "Posicion Jugador":
+            case "Posicion NPC":
                 aux += ", \"Pos\": \"" + e.getVar().pos.ToString() + "\"";
                 break;
             case "Inicio Sala":
