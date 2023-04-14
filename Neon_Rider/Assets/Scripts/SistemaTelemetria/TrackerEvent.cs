@@ -25,6 +25,9 @@ public class TrackerEvent
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         pVar = pV;
     }
+    public TrackerEvent()
+    {
+    }
 
     public string ToJson()
     {
