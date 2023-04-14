@@ -862,6 +862,10 @@ MonoBehaviour:
     isTracked: 1
   - eventName: Bloqueo
     isTracked: 1
+  - eventName: Posicion Jugador
+    isTracked: 1
+  - eventName: Posicion NPC
+    isTracked: 1
 --- !u!1 &1233433322
 GameObject:
   m_ObjectHideFlags: 0
