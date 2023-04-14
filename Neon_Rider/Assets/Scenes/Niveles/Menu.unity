@@ -808,6 +808,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1232956600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6558965507926781986, guid: c0a32ff600d63ae40a78a504f99cf08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 149911186531559618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232956603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232956600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492fa0abf002f174fa54602b54d1332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233433322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,6 +2359,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9105732537059730038, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: serializer
+      value: 
+      objectReference: {fileID: 1232956603}
     - target: {fileID: 9105732537059730038, guid: c0a32ff600d63ae40a78a504f99cf08c,
         type: 3}
       propertyPath: timeBetweenPosts
