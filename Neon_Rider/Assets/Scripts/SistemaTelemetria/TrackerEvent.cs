@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public enum EventType { INICIO, FIN, INICIOSALA, FINSALA, INICIONIVEL, FINNIVEL, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
@@ -26,10 +27,10 @@ public class TrackerEvent
         pVar = pV;
     }
 
-    public string ToJson()
+    public async Task<string> ToJson()
     {
         JSONSerializer serializer = new JSONSerializer();
-        return serializer.Serialize(this);
+        return await serializer.Serialize(this);
     }
 
     public EventType GetType()
