@@ -16,7 +16,13 @@ public class Tracker : MonoBehaviour
     float timeBetweenPosts;
     float tSinceLastPost = 0;
 
-    public JSONSerializer serializer;
+    [SerializeField]
+    bool serializeInJSON = true;
+    [SerializeField]
+    bool serializeInXML = true;
+
+    TrackerConfig config;
+    JSONSerializer serializerJSON;
 
     void Awake()
     {
@@ -34,10 +40,12 @@ public class Tracker : MonoBehaviour
 
     private void Init()
     {
+        config = GetComponent<TrackerConfig>();
+        serializerJSON = GetComponent<JSONSerializer>();
         sessionId = AnalyticsSessionInfo.sessionId;
         eventsBuff = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
-        AddEvent(EventType.INICIO, new possibleVar { });
+        AddEvent("Inicio", new possibleVar { });
     }
 
     private void Update()
@@ -55,16 +63,19 @@ public class Tracker : MonoBehaviour
     {
         if (instance == this)
         {
-            AddEvent(EventType.FIN, new possibleVar { });
+            AddEvent("Fin", new possibleVar { });
             Post();
 
             createStream.Close();
         }
     }
 
-    public void AddEvent(EventType t, possibleVar pV)
+    public void AddEvent(string t, possibleVar pV)
     {
-        eventsBuff.Add(new TrackerEvent(t, pV));
+        if (!config.eventsTracked.ContainsKey(t))
+            Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
+        else if(config.eventsTracked[t])
+            eventsBuff.Add(new TrackerEvent(t, pV));
     }
 
     public void TrackCompletable(string s, TrackerEvent e)
@@ -76,11 +87,13 @@ public class Tracker : MonoBehaviour
     {
         foreach (TrackerEvent e in eventsBuff)
         {
-            string ser = serializer.Serialize(e);
-            await createStream.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia             
+            if (serializeInJSON)
+            {
+                string ser = await serializerJSON.Serialize(e);
+                await createStream.WriteLineAsync("{" + ser + "},");   // !!! Cambiarlo por llamada a persistencia
+            }
         }
         eventsBuff.Clear();
-
     }
 
     public long getSessionId()
