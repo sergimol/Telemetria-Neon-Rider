@@ -32,6 +32,7 @@ public class DataXmlObject
     // Variables comunes a todos los eventos
     public string x_type;
     public string x_time;
+    public string x_sessionId;
 
     // Variables diferentes de cada evento
     public string? x_enemyId { get; set; }
@@ -65,6 +66,7 @@ public class XMLSerializer : ISerializer
         // Atributos comunes a todos los eventos
         dataXml.x_type = t;
         dataXml.x_time = e.getTimeStamp().ToString();
+        dataXml.x_sessionId = Tracker.instance.getSessionId().ToString();
 
         // Atributos específicos a cada evento
         switch (t)

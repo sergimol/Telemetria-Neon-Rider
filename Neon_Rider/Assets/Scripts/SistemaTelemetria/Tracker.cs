@@ -10,6 +10,7 @@ public class Tracker : MonoBehaviour
     public static Tracker instance = null;
     StreamWriter createStream_json;
     StreamWriter createStream_xml;
+    StreamWriter createStream_csv;
     long sessionId;
     List<TrackerEvent> eventsBuff;
 
@@ -21,10 +22,13 @@ public class Tracker : MonoBehaviour
     bool serializeInJSON = true;
     [SerializeField]
     bool serializeInXML = true;
+    [SerializeField]
+    bool serializeInCSV = true;
 
     TrackerConfig config;
     JSONSerializer serializerJSON;
     XMLSerializer serializerXML;
+    CSVSerializer serializerCSV;
 
     void Awake()
     {
@@ -45,10 +49,13 @@ public class Tracker : MonoBehaviour
         config = GetComponent<TrackerConfig>();
         serializerJSON = GetComponent<JSONSerializer>();
         serializerXML = GetComponent<XMLSerializer>();
+        serializerCSV = GetComponent<CSVSerializer>();
+
         sessionId = AnalyticsSessionInfo.sessionId;
         eventsBuff = new();
         createStream_json = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
         createStream_xml = new StreamWriter("GameTracked.xml"); // !!! Cambiarlo por llamada a la persistencia
+        createStream_csv = new StreamWriter("GameTracked.csv"); // !!! Cambiarlo por llamada a la persistencia
         AddEvent("Inicio", new possibleVar { });
     }
 
@@ -72,6 +79,7 @@ public class Tracker : MonoBehaviour
 
             createStream_json.Close();
             createStream_xml.Close();
+            createStream_csv.Close();
         }
     }
 
@@ -101,6 +109,12 @@ public class Tracker : MonoBehaviour
             {
                 string ser = await serializerXML.Serialize(e);
                 await createStream_xml.WriteLineAsync(ser);   // !!! Cambiarlo por llamada a persistencia
+            }
+            if (serializeInCSV)
+            {
+                string ser = await serializerCSV.Serialize(e);
+                Debug.Log(ser);
+                await createStream_csv.WriteLineAsync(ser);   // !!! Cambiarlo por llamada a persistencia
             }
         }
         eventsBuff.Clear();
