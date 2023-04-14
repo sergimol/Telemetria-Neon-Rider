@@ -13,6 +13,10 @@ public class JSONSerializer : ISerializer
         // Atributos específicos a cada evento
         switch (t)
         {
+            case EventType.MUERTEENEMIGO:
+                aux += ", \"Pos\": \"" + e.getVar().pos.ToString() + "\"";
+                aux += ", \"EnemyID\": \"" + e.getVar().enemyId.ToString() + "\"";
+                break;
             case EventType.MUERTEJUGADOR:
             case EventType.BLOQUEOBALA:
                 aux += ", \"Pos\": \"" + e.getVar().pos.ToString() + "\"";
