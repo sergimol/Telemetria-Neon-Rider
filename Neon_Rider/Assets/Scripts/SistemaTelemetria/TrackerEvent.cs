@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-
-public enum EventType { INICIO, FIN, INICIOSALA, FINSALA, INICIONIVEL, FINNIVEL, MUERTEJUGADOR, MUERTEENEMIGO, BLOQUEOBALA }
 public struct possibleVar
 {
     public Vector2? pos;
@@ -13,26 +12,29 @@ public struct possibleVar
 public class TrackerEvent
 {
     //Variables comunes
-    EventType type; 
+    String type; 
     long timeStamp;
 
     //Variables distintas según tipo
     possibleVar pVar;
 
-    public TrackerEvent(EventType e, possibleVar pV)
+    public TrackerEvent(String t, possibleVar pV)
     {
-        type = e;
+        type = t;
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         pVar = pV;
     }
-
-    public string ToJson()
+    public TrackerEvent()
     {
-        JSONSerializer serializer = new JSONSerializer();
-        return serializer.Serialize(this);
     }
 
-    public EventType GetType()
+    public async Task<string> ToJson()
+    {
+        JSONSerializer serializer = new JSONSerializer();
+        return await serializer.Serialize(this);
+    }
+
+    public string GetEventType()
     {
         return type;
     }
