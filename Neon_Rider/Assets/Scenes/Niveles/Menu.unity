@@ -721,6 +721,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744135605192134282, guid: 4d378f75501643c418f701def9c82bd4,
         type: 3}
+      propertyPath: mando
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744135605192134282, guid: 4d378f75501643c418f701def9c82bd4,
+        type: 3}
       propertyPath: deadVal
       value: -1
       objectReference: {fileID: 0}
@@ -814,7 +819,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 149911186531559618}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1232956603
+--- !u!114 &1232956603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5311825715476211775, guid: c0a32ff600d63ae40a78a504f99cf08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 149911186531559618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232956600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492fa0abf002f174fa54602b54d1332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1232956604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -823,9 +840,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1232956600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 492fa0abf002f174fa54602b54d1332e, type: 3}
+  m_Script: {fileID: 11500000, guid: 71e06449c65adea47966790176424d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventConfig:
+  - eventName: Inicio
+    isTracked: 1
+  - eventName: Fin
+    isTracked: 1
+  - eventName: Inicio Sala
+    isTracked: 1
+  - eventName: Fin Sala
+    isTracked: 1
+  - eventName: Inicio Nivel
+    isTracked: 1
+  - eventName: Fin Nivel
+    isTracked: 1
+  - eventName: Muerte Jugador
+    isTracked: 1
+  - eventName: Muerte Enemigo
+    isTracked: 1
+  - eventName: Bloqueo
+    isTracked: 1
 --- !u!1 &1233433322
 GameObject:
   m_ObjectHideFlags: 0

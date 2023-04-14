@@ -21,6 +21,7 @@ public class Tracker : MonoBehaviour
     [SerializeField]
     bool serializeInXML = true;
 
+    TrackerConfig config;
     JSONSerializer serializerJSON;
 
     void Awake()
@@ -39,11 +40,12 @@ public class Tracker : MonoBehaviour
 
     private void Init()
     {
+        config = GetComponent<TrackerConfig>();
         serializerJSON = GetComponent<JSONSerializer>();
         sessionId = AnalyticsSessionInfo.sessionId;
         eventsBuff = new();
         createStream = new StreamWriter("GameTracked.json"); // !!! Cambiarlo por llamada a la persistencia
-        AddEvent(EventType.INICIO, new possibleVar { });
+        AddEvent("Inicio", new possibleVar { });
     }
 
     private void Update()
@@ -61,16 +63,19 @@ public class Tracker : MonoBehaviour
     {
         if (instance == this)
         {
-            AddEvent(EventType.FIN, new possibleVar { });
+            AddEvent("Fin", new possibleVar { });
             Post();
 
             createStream.Close();
         }
     }
 
-    public void AddEvent(EventType t, possibleVar pV)
+    public void AddEvent(string t, possibleVar pV)
     {
-        eventsBuff.Add(new TrackerEvent(t, pV));
+        if (!config.eventsTracked.ContainsKey(t))
+            Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
+        else if(config.eventsTracked[t])
+            eventsBuff.Add(new TrackerEvent(t, pV));
     }
 
     public void TrackCompletable(string s, TrackerEvent e)
