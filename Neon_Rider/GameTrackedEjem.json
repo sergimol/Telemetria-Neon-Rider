@@ -1,6 +1,0 @@
-{
-    "events":[
-        {"TimeStamp": "1681289621", "SessionId": "0", "EventType": "INICIO"},
-        {"TimeStamp": "1681289623", "SessionId": "0", "EventType": "FIN"}
-    ]
-}

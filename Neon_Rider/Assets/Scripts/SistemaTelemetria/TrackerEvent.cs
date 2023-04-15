@@ -28,12 +28,6 @@ public class TrackerEvent
     {
     }
 
-    public async Task<string> ToJson()
-    {
-        JSONSerializer serializer = new JSONSerializer();
-        return await serializer.Serialize(this);
-    }
-
     public string GetEventType()
     {
         return type;

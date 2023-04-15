@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CSVSerializer : ISerializer
 {
-    public override async Task<string> Serialize(TrackerEvent e)
+    public override string Serialize(TrackerEvent e)
     {
         string t = e.GetEventType();
         // Atributos comunes a todos los eventos
@@ -35,6 +35,6 @@ public class CSVSerializer : ISerializer
         }
 
         // La devolvemos como string
-        return await Task.FromResult(aux);
+        return aux;
     }
 }

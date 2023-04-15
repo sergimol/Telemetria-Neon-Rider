@@ -54,7 +54,7 @@ public class DataXmlObject
 
 public class XMLSerializer : ISerializer
 {
-    public override async Task<string> Serialize(TrackerEvent e)
+    public override string Serialize(TrackerEvent e)
     {
         string t = e.GetEventType();
 
@@ -93,6 +93,6 @@ public class XMLSerializer : ISerializer
         serializer.Serialize(stringWriter, dataXml);
 
         // La devolvemos como string
-        return await Task.FromResult(stringWriter.ToString());
+        return stringWriter.ToString();
     }
 }

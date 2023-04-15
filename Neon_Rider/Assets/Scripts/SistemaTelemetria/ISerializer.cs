@@ -5,6 +5,6 @@ using UnityEngine;
 
 public abstract class ISerializer : MonoBehaviour
 {
-    public abstract Task<string> Serialize(TrackerEvent e);
+    public abstract string Serialize(TrackerEvent e);
 }
 
