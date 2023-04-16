@@ -1,3 +1,9 @@
-{"TimeStamp": "1681500950", "SessionId": "3287084473406544844", "EventType": "Inicio Sala", "RoomId": "1"},
-{"TimeStamp": "1681500953", "SessionId": "3287084473406544844", "EventType": "Bloqueo", "Pos": "(52.24, 0.79)"},
-{"TimeStamp": "1681500954", "SessionId": "3287084473406544844", "EventType": "Posicion Jugador", "Pos": "(52.24, -0.05)"},
+[{"TimeStamp": "1681555311", "SessionId": "2726097592121634640", "EventType": "Inicio"},
+{"TimeStamp": "1681555315", "SessionId": "2726097592121634640", "EventType": "Inicio Sala", "RoomId": "1"},
+{"TimeStamp": "1681555318", "SessionId": "2726097592121634640", "EventType": "Bloqueo", "Pos": "(51.16, -0.40)"},
+{"TimeStamp": "1681555319", "SessionId": "2726097592121634640", "EventType": "Bloqueo", "Pos": "(53.42, -2.38)"},
+{"TimeStamp": "1681555320", "SessionId": "2726097592121634640", "EventType": "Bloqueo", "Pos": "(54.22, -3.17)"},
+{"TimeStamp": "1681555320", "SessionId": "2726097592121634640", "EventType": "Muerte Enemigo", "Pos": "(57.20, -7.58)", "EnemyID": "0"},
+{"TimeStamp": "1681555323", "SessionId": "2726097592121634640", "EventType": "Muerte Enemigo", "Pos": "(71.54, 15.56)", "EnemyID": "0"},
+{"TimeStamp": "1681555325", "SessionId": "2726097592121634640", "EventType": "Muerte Jugador", "Pos": "(84.62, 13.71)"},
+{"TimeStamp": "1681555328", "SessionId": "2726097592121634640", "EventType": "Fin"}]
