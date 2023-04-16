@@ -25,21 +25,21 @@ public class FilePersistence : IPersistence
     private void Start()
     {
         eventsBuff = new();
-
+        string id = Tracker.instance.getSessionId().ToString();
         if (serializeInJSON)
         {
             serializerJSON = GetComponent<JSONSerializer>();
-            jsonStream = new StreamWriter("GameTracked.json");
+            jsonStream = new StreamWriter(id + ".json");
         }
         if (serializeInXML)
         {
             serializerXML = GetComponent<XMLSerializer>();
-            xmlStream = new StreamWriter("GameTracked.xml");
+            xmlStream = new StreamWriter(id + ".xml");
         }
         if (serializeInCSV)
         {
             serializerCSV = GetComponent<CSVSerializer>();
-            csvStream = new StreamWriter("GameTracked.csv");
+            csvStream = new StreamWriter(id + ".csv");
         }
     }
 
