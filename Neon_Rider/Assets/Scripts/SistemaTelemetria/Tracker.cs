@@ -15,7 +15,8 @@ public class Tracker : MonoBehaviour
     float tSinceLastPost = 0;
 
     TrackerConfig config;
-    FilePersistence persistence;
+    FilePersistence filePersistence;
+    ServerPersistence serverPersistence;
 
     void Awake()
     {
@@ -34,7 +35,8 @@ public class Tracker : MonoBehaviour
     private void Init()
     {
         config = GetComponent<TrackerConfig>();
-        persistence = GetComponent<FilePersistence>();
+        filePersistence = GetComponent<FilePersistence>();
+        serverPersistence = GetComponent<ServerPersistence>();
 
         sessionId = AnalyticsSessionInfo.sessionId;
     }
@@ -47,7 +49,8 @@ public class Tracker : MonoBehaviour
     {
         if (tSinceLastPost > timeBetweenPosts)
         {
-            persistence.Flush();
+            filePersistence.Flush();
+            serverPersistence.Flush();
             tSinceLastPost = 0;
         }
         else
@@ -59,7 +62,8 @@ public class Tracker : MonoBehaviour
         if (instance == this)
         {
             AddEvent("Fin", new possibleVar { });
-            persistence.Flush();
+            filePersistence.Flush();
+            serverPersistence.Flush();
         }
     }
 
@@ -68,7 +72,10 @@ public class Tracker : MonoBehaviour
         if (!config.eventsTracked.ContainsKey(t))
             Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
         else if (config.eventsTracked[t])
-            persistence.Send(new TrackerEvent(t, pV));
+        {
+            filePersistence.Send(new TrackerEvent(t, pV));
+            serverPersistence.Send(new TrackerEvent(t, pV));
+        }
     }
 
     public void TrackCompletable(string s, TrackerEvent e)

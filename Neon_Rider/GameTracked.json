@@ -1,6 +1,3 @@
-[{"TimeStamp": "1681653026", "SessionId": "3340471878399509599", "EventType": "Inicio"},
-{"TimeStamp": "1681653029", "SessionId": "3340471878399509599", "EventType": "Inicio Sala", "RoomId": "1"},
-{"TimeStamp": "1681653033", "SessionId": "3340471878399509599", "EventType": "Bloqueo", "Pos": "(50.67, 0.79)"},
-{"TimeStamp": "1681653033", "SessionId": "3340471878399509599", "EventType": "Bloqueo", "Pos": "(50.67, 0.79)"},
-{"TimeStamp": "1681653034", "SessionId": "3340471878399509599", "EventType": "Muerte Jugador", "Pos": "(53.51, -5.75)"},
-{"TimeStamp": "1681653036", "SessionId": "3340471878399509599", "EventType": "Fin"}]
+[{"TimeStamp": "1681660595", "SessionId": "1209043992168568914", "EventType": "Inicio"},
+{"TimeStamp": "1681660598", "SessionId": "1209043992168568914", "EventType": "Inicio Sala", "RoomId": "1"},
+{"TimeStamp": "1681660602", "SessionId": "1209043992168568914", "EventType": "Fin"}]

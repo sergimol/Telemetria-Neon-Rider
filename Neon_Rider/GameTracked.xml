@@ -1,49 +1,19 @@
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Inicio</x_type>
-  <x_time>1681653026</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
+  <x_time>1681660595</x_time>
+  <x_sessionId>1209043992168568914</x_sessionId>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Inicio Sala</x_type>
-  <x_time>1681653029</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
+  <x_time>1681660598</x_time>
+  <x_sessionId>1209043992168568914</x_sessionId>
   <x_roomId>1</x_roomId>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Bloqueo</x_type>
-  <x_time>1681653033</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
-  <x_pos>
-    <x>50,67149</x>
-    <y>0,7919596</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Bloqueo</x_type>
-  <x_time>1681653033</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
-  <x_pos>
-    <x>50,67149</x>
-    <y>0,7919596</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Muerte Jugador</x_type>
-  <x_time>1681653034</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
-  <x_pos>
-    <x>53,50791</x>
-    <y>-5,752735</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Fin</x_type>
-  <x_time>1681653036</x_time>
-  <x_sessionId>3340471878399509599</x_sessionId>
+  <x_time>1681660602</x_time>
+  <x_sessionId>1209043992168568914</x_sessionId>
 </DataXmlObject>
