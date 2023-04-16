@@ -17,14 +17,14 @@ public class CSVSerializer : ISerializer
         switch (t)
         {
             case "Muerte Enemigo":
-                aux += "Pos," + e.getVar().pos.Value.x.ToString() + "," + e.getVar().pos.Value.y.ToString() + ",";
+                aux += "Pos," + "\"" + e.getVar().pos.Value.x.ToString() + "\"" + ","+ "\"" + e.getVar().pos.Value.y.ToString() + "\""+",";
                 aux += "EnemyID," + e.getVar().enemyId.ToString() + ",";
                 break;
             case "Muerte Jugador":
             case "Bloqueo":
             case "Posicion Jugador":
             case "Posicion NPC":
-                aux += "Pos," + e.getVar().pos.Value.x.ToString() + "," + e.getVar().pos.Value.y.ToString() + ",";
+                aux += "Pos," + "\"" + e.getVar().pos.Value.x.ToString() + "\"" + "," + "\"" + e.getVar().pos.Value.y.ToString() + "\"" + ",";
                 break;
             case "Inicio Sala":
                 aux += "RoomID," + e.getVar().roomId.ToString() + ",";
