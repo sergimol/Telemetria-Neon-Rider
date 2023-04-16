@@ -1,81 +1,49 @@
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Inicio</x_type>
-  <x_time>1681555311</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653026</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Inicio Sala</x_type>
-  <x_time>1681555315</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653029</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
   <x_roomId>1</x_roomId>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Bloqueo</x_type>
-  <x_time>1681555318</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653033</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
   <x_pos>
-    <x>51,16378</x>
-    <y>-0,3959797</y>
+    <x>50,67149</x>
+    <y>0,7919596</y>
   </x_pos>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Bloqueo</x_type>
-  <x_time>1681555319</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653033</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
   <x_pos>
-    <x>53,42369</x>
-    <y>-2,375879</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Bloqueo</x_type>
-  <x_time>1681555320</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
-  <x_pos>
-    <x>54,21565</x>
-    <y>-3,167839</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Muerte Enemigo</x_type>
-  <x_time>1681555320</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
-  <x_enemyId>0</x_enemyId>
-  <x_pos>
-    <x>57,20472</x>
-    <y>-7,584923</y>
-  </x_pos>
-</DataXmlObject>
-<?xml version="1.0" encoding="utf-16"?>
-<DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <x_type>Muerte Enemigo</x_type>
-  <x_time>1681555323</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
-  <x_enemyId>0</x_enemyId>
-  <x_pos>
-    <x>71,54143</x>
-    <y>15,56474</y>
+    <x>50,67149</x>
+    <y>0,7919596</y>
   </x_pos>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Muerte Jugador</x_type>
-  <x_time>1681555325</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653034</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
   <x_pos>
-    <x>84,61899</x>
-    <y>13,70971</y>
+    <x>53,50791</x>
+    <y>-5,752735</y>
   </x_pos>
 </DataXmlObject>
 <?xml version="1.0" encoding="utf-16"?>
 <DataXmlObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <x_type>Fin</x_type>
-  <x_time>1681555328</x_time>
-  <x_sessionId>2726097592121634640</x_sessionId>
+  <x_time>1681653036</x_time>
+  <x_sessionId>3340471878399509599</x_sessionId>
 </DataXmlObject>
