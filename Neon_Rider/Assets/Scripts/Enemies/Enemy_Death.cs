@@ -10,7 +10,7 @@ public class Enemy_Death : MonoBehaviour
     Turret turret;
     PrestEnemyAttack prest;
     Ralentizador ralen;
-
+    [SerializeField] int id;
 
     private void Start()
     {
@@ -74,7 +74,7 @@ public class Enemy_Death : MonoBehaviour
                     child.SetParent(null);
                 }
             }
-            Tracker.instance.AddEvent("Muerte Enemigo", new possibleVar { pos = transform.position, enemyId = 0 });
+            Tracker.instance.AddEvent("Muerte Enemigo", new possibleVar { pos = transform.position, enemyId = id });
             Destroy(this.gameObject);
         }
     }
