@@ -11,7 +11,7 @@ public class InicioEvent : TrackerEvent
     // Serializacion en JSON
     public override string toJSON()
     {
-        string cadena = base.toJSON();
+        string cadena = "[" + base.toJSON() + "},";
         return cadena;
     }
 

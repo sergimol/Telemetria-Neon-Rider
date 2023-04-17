@@ -21,7 +21,7 @@ public class MuerteEnemigoEvent : TrackerEvent
     {
         string cadena = base.toJSON();
         cadena += ", \"EnemyID\": \"" + enemyId.ToString() + "\"";
-        cadena += ", \"Pos\": \"" + pos.ToString() + "\"";
+        cadena += ", \"Pos\": \"" + pos.ToString() + "\"},";
         return cadena;
     }
 

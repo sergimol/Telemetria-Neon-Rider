@@ -16,7 +16,9 @@ public class Tracker : MonoBehaviour
 
     TrackerConfig config;
     FilePersistence filePersistence;
+    [SerializeField] bool filePers = true;
     ServerPersistence serverPersistence;
+    [SerializeField] bool serverPers = true;
 
     void Awake()
     {
@@ -49,8 +51,8 @@ public class Tracker : MonoBehaviour
     {
         if (tSinceLastPost > timeBetweenPosts)
         {
-            filePersistence.Flush();
-            serverPersistence.Flush();
+            if (filePers) filePersistence.Flush();
+            if (serverPers) serverPersistence.Flush();
             tSinceLastPost = 0;
         }
         else
@@ -62,8 +64,8 @@ public class Tracker : MonoBehaviour
         if (instance == this)
         {
             AddEvent("Fin", new possibleVar { });
-            filePersistence.Flush();
-            serverPersistence.Flush();
+            if (filePers) filePersistence.Flush();
+            if (serverPers) serverPersistence.Flush();
         }
     }
 
@@ -73,14 +75,9 @@ public class Tracker : MonoBehaviour
             Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
         else if (config.eventsTracked[t])
         {
-            filePersistence.Send(new TrackerEvent(t, pV));
-            serverPersistence.Send(new TrackerEvent(t, pV));
+            if (filePers) filePersistence.Send(new TrackerEvent(t, pV));
+            if (serverPers) serverPersistence.Send(new TrackerEvent(t, pV));
         }
-    }
-
-    public void TrackCompletable(string s, TrackerEvent e)
-    {
-
     }
 
     public long getSessionId()

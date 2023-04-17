@@ -18,7 +18,7 @@ public class InicioSalaEvent : TrackerEvent
     public override string toJSON()
     {
         string cadena = base.toJSON();
-        cadena += ", \"RoomId\": \"" + roomId.ToString() + "\"";
+        cadena += ", \"RoomId\": \"" + roomId.ToString() + "\"},";
         return cadena;
     }
 

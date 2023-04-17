@@ -62,10 +62,10 @@ public class FilePersistence : IPersistence
     {
         List<TrackerEvent> events = new List<TrackerEvent>(eventsBuff);
         eventsBuff.Clear();
-        WriteAsync(events);
+        Write(events);
     }
 
-    private void WriteAsync(List<TrackerEvent> events)
+    private void Write(List<TrackerEvent> events)
     {
          foreach (TrackerEvent e in events)
         {

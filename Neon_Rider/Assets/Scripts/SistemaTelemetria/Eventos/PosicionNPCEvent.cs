@@ -18,7 +18,7 @@ public class PosicionNPCEvent : TrackerEvent
     public override string toJSON()
     {
         string cadena = base.toJSON();
-        cadena += ", \"Pos\": \"" + pos.ToString() + "\"";
+        cadena += ", \"Pos\": \"" + pos.ToString() + "\"},";
         return cadena;
     }
 
