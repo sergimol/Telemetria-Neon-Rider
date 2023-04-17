@@ -14,6 +14,11 @@ public class InicioSalaEvent : TrackerEvent
     // Atributos del evento
     int roomId;
 
+    public InicioSalaEvent(int rId) : base("InicioSala")
+    {
+        roomId = rId;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {

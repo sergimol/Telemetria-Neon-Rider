@@ -57,7 +57,7 @@ public class Bloqueo : MonoBehaviour
                     Destroy(collision.gameObject);
                 }
                 activPow.AddToCont();
-                Tracker.instance.AddEvent("Bloqueo", new possibleVar { pos = transform.position }) ;
+                Tracker.instance.AddEvent(new BloqueoEvent(transform.position)) ;
                 Debug.Log("Parryada");
             }
             if (collision.GetComponent<PrestBullet>() != null && purple.enabled == false) 

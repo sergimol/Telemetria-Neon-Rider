@@ -74,8 +74,13 @@ public class Enemy_Death : MonoBehaviour
                     child.SetParent(null);
                 }
             }
-            Tracker.instance.AddEvent("Muerte Enemigo", new possibleVar { pos = transform.position, enemyId = id });
+            Tracker.instance.AddEvent(new MuerteEnemigoEvent(transform.position, id));
             Destroy(this.gameObject);
         }
+    }
+
+    public int getId()
+    {
+        return id;
     }
 }

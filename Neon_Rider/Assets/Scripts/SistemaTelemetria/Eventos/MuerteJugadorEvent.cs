@@ -14,6 +14,11 @@ public class MuerteJugadorEvent : TrackerEvent
     // Atributos del evento
     Vector2 pos;
 
+    public MuerteJugadorEvent(Vector2 p) : base("MuerteJugador")
+    {
+        pos = p;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {

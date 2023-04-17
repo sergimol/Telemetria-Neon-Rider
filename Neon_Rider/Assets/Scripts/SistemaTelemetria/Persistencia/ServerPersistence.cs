@@ -20,8 +20,12 @@ public class ServerPersistence : IPersistence
 
     private int counterEvents = 0;
 
+    string idOrdenador = "NoId";
+
     private void Awake()
     {
+        idOrdenador = SystemInfo.deviceUniqueIdentifier;
+
         AppOptions options = new AppOptions
         {
             ApiKey = "AIzaSyDxEcT2zNZyKJ6_PSwVgTHh14IQdgf7EFM",
@@ -59,7 +63,7 @@ public class ServerPersistence : IPersistence
         foreach (TrackerEvent e in events)
         {
             string ser = serializerJSON.Serialize(e);
-            await reference.Child("Events").Child(Tracker.instance.getSessionId().ToString()).Child(counterEvents.ToString()).SetRawJsonValueAsync(ser.TrimStart('['));
+            await reference.Child("PcId: " + idOrdenador).Child("SessionId: " + Tracker.instance.getSessionId().ToString()).Child(counterEvents.ToString()).SetRawJsonValueAsync(ser.TrimStart('['));
             counterEvents++;
         }
     }

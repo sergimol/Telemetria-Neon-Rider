@@ -13,12 +13,13 @@ public class PositionTimeEventTrack : MonoBehaviour
     bool player;
 
     private float actualTime;
-
+    Enemy_Death enemy_Death;
 
     // Start is called before the first frame update
     void Start()
     {
         actualTime = 0;
+        enemy_Death = GetComponent<Enemy_Death>();
     }
 
     // Update is called once per frame
@@ -29,10 +30,9 @@ public class PositionTimeEventTrack : MonoBehaviour
         {
             actualTime = 0;
             if (!player)
-                Tracker.instance.AddEvent("Posicion NPC", new possibleVar { pos = transform.position });
+                Tracker.instance.AddEvent(new PosicionNPCEvent(transform.position, enemy_Death.getId()));
             else
-                Tracker.instance.AddEvent("Posicion Jugador", new possibleVar { pos = transform.position });
-            //Debug.Log("PosicionXTiempo");
+                Tracker.instance.AddEvent(new PosicionJugadorEvent(transform.position));
         }
     }
 }

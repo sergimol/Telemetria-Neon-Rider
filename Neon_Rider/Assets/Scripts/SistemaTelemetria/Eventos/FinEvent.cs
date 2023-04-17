@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class FinEvent : TrackerEvent
 {
+    public FinEvent() : base("Fin")
+    {
+
+    }
 
     // Serializacion en JSON
     public override string toJSON()

@@ -44,7 +44,7 @@ public class Tracker : MonoBehaviour
     }
     private void Start()
     {
-        AddEvent("Inicio", new possibleVar { });
+        AddEvent(new InicioEvent());
     }
 
     private void Update()
@@ -63,21 +63,21 @@ public class Tracker : MonoBehaviour
     {
         if (instance == this)
         {
-            AddEvent("Fin", new possibleVar { });
+            AddEvent(new FinEvent());
             if (filePers) filePersistence.Flush();
             if (serverPers) serverPersistence.Flush();
         }
     }
 
-    public void AddEvent(string t, possibleVar pV)
+    public void AddEvent(TrackerEvent e)
     {
-        if (!config.eventsTracked.ContainsKey(t))
-            Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
-        else if (config.eventsTracked[t])
-        {
-            if (filePers) filePersistence.Send(new TrackerEvent(t, pV));
-            if (serverPers) serverPersistence.Send(new TrackerEvent(t, pV));
-        }
+        //if (!config.eventsTracked.ContainsKey(t))
+        //    Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
+        //else if (config.eventsTracked[t])
+        //{
+            if (filePers) filePersistence.Send(e);
+            if (serverPers) serverPersistence.Send(e);
+        //}
     }
 
     public long getSessionId()

@@ -16,6 +16,12 @@ public class MuerteEnemigoEvent : TrackerEvent
     Vector2 pos;
     int enemyId;
 
+    public MuerteEnemigoEvent(Vector2 p, int enId) : base("MuerteEnemigo")
+    {
+        pos = p;
+        enemyId = enId;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {
