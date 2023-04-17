@@ -30,6 +30,15 @@ public class FilePersistence : IPersistence
     {
         eventsBuff = new();
         string id = Tracker.instance.getSessionId().ToString();
+
+        // Crear carpetas del tracker
+        if (!Directory.Exists(@"Trazas\"))
+        {
+            Directory.CreateDirectory(ruta_json);
+            Directory.CreateDirectory(ruta_csv);
+            Directory.CreateDirectory(ruta_xml);
+        }
+
         if (serializeInJSON)
         {
             serializerJSON = GetComponent<JSONSerializer>();
@@ -45,6 +54,8 @@ public class FilePersistence : IPersistence
             serializerCSV = GetComponent<CSVSerializer>();
             csvStream = new StreamWriter(ruta_csv + id + ".csv");
         }
+
+
     }
 
     private void OnDestroy()
