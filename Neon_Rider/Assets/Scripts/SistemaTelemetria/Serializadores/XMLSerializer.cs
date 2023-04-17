@@ -56,43 +56,45 @@ public class XMLSerializer : ISerializer
 {
     public override string Serialize(TrackerEvent e)
     {
-        string t = e.GetEventType();
+        //string t = e.GetEventType();
 
-        // Creacion del objeto DataXml
-        DataXmlObject dataXml = new DataXmlObject();
-        StringWriter stringWriter = new StringWriter();
-        XmlSerializer serializer = new XmlSerializer(typeof(DataXmlObject));
+        //// Creacion del objeto DataXml
+        //DataXmlObject dataXml = new DataXmlObject();
+        //StringWriter stringWriter = new StringWriter();
+        //XmlSerializer serializer = new XmlSerializer(typeof(DataXmlObject));
 
-        // Atributos comunes a todos los eventos
-        dataXml.x_type = t;
-        dataXml.x_time = e.getTimeStamp().ToString();
-        dataXml.x_sessionId = Tracker.instance.getSessionId().ToString();
+        //// Atributos comunes a todos los eventos
+        //dataXml.x_type = t;
+        //dataXml.x_time = e.getTimeStamp().ToString();
+        //dataXml.x_sessionId = Tracker.instance.getSessionId().ToString();
 
-        // Atributos específicos a cada evento
-        switch (t)
-        {
-            case "Muerte Enemigo":
-                dataXml.x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y);
-                dataXml.x_enemyId = e.getVar().enemyId.ToString();
-                break;
-            case "Muerte Jugador":
-            case "Bloqueo":
-            case "Posicion Jugador":
-            case "Posicion NPC":
-                dataXml.x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y);
-                break;
-            case "Inicio Sala":
-                dataXml.x_roomId = e.getVar().roomId.ToString();
-                break;
-            case "Fin Sala":
-                dataXml.x_roomId = e.getVar().roomId.ToString();
-                break;
-        }
+        //// Atributos específicos a cada evento
+        //switch (t)
+        //{
+        //    case "Muerte Enemigo":
+        //        dataXml.x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y);
+        //        dataXml.x_enemyId = e.getVar().enemyId.ToString();
+        //        break;
+        //    case "Muerte Jugador":
+        //    case "Bloqueo":
+        //    case "Posicion Jugador":
+        //    case "Posicion NPC":
+        //        dataXml.x_pos = new xmlVector2(e.getVar().pos.Value.x, e.getVar().pos.Value.y);
+        //        break;
+        //    case "Inicio Sala":
+        //        dataXml.x_roomId = e.getVar().roomId.ToString();
+        //        break;
+        //    case "Fin Sala":
+        //        dataXml.x_roomId = e.getVar().roomId.ToString();
+        //        break;
+        //}
 
-        // Lo serializamos con el formato en una variable
-        serializer.Serialize(stringWriter, dataXml);
+        //// Lo serializamos con el formato en una variable
+        //serializer.Serialize(stringWriter, dataXml);
+
+        string cadena = e.toXML();
 
         // La devolvemos como string
-        return stringWriter.ToString();
+        return cadena;
     }
 }
