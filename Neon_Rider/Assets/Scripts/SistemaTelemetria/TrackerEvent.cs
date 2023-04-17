@@ -5,13 +5,17 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using UnityEngine;
+
 public class TrackerEvent
 {
     //Variables comunes
-    protected String type; 
+    protected string type; 
     protected long timeStamp;
 
-    public TrackerEvent(String t)
+    [SerializeField]
+    bool trackingEnabled = true;
+
+    public TrackerEvent(string t)
     {
         type = t;
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();

@@ -2324,8 +2324,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
         type: 3}
+      propertyPath: eventConfig.Array.data[2].eventName
+      value: InicioSala
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[3].eventName
+      value: FinSala
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[4].eventName
+      value: InicioNivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[5].eventName
+      value: FinNivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[6].eventName
+      value: MuerteJugador
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[7].eventName
+      value: MuerteEnemigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[9].eventName
+      value: PosicionJugador
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
       propertyPath: eventConfig.Array.data[9].isTracked
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[10].eventName
+      value: PosicionNPC
       objectReference: {fileID: 0}
     - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
         type: 3}

@@ -71,13 +71,14 @@ public class Tracker : MonoBehaviour
 
     public void AddEvent(TrackerEvent e)
     {
-        //if (!config.eventsTracked.ContainsKey(t))
-        //    Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
-        //else if (config.eventsTracked[t])
-        //{
+        string t = e.GetEventType();
+        if (!config.eventsTracked.ContainsKey(t))
+            Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
+        else if (config.eventsTracked[t])
+        {
             if (filePers) filePersistence.Send(e);
             if (serverPers) serverPersistence.Send(e);
-        //}
+        }
     }
 
     public long getSessionId()
