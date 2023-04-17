@@ -13,12 +13,20 @@ public class PosicionNPCEvent : TrackerEvent
 {
     // Atributos del evento
     Vector2 pos;
+    int npcId;
+
+    public PosicionNPCEvent(Vector2 p, int id): base("PosicionNPC")
+    {
+        pos = p;
+        npcId = id;
+    }
 
     // Serializacion en JSON
     public override string toJSON()
     {
         string cadena = base.toJSON();
-        cadena += ", \"Pos\": \"" + pos.ToString() + "\"},";
+        cadena += ", \"Pos\": \"" + pos.ToString() + "\"" 
+               + ", \"NPCId\": \"" + npcId.ToString() + "\"},";
         return cadena;
     }
 

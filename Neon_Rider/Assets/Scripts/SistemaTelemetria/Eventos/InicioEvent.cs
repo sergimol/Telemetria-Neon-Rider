@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class InicioEvent : TrackerEvent
 {
+    public InicioEvent() : base("Inicio")
+    {
+    }
 
     // Serializacion en JSON
     public override string toJSON()

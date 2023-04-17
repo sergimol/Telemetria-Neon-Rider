@@ -14,6 +14,11 @@ public class PosicionJugadorEvent : TrackerEvent
     // Atributos del evento
     Vector2 pos;
 
+    public PosicionJugadorEvent(Vector2 p) : base("PosicionJugador")
+    {
+        pos = p;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {

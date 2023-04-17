@@ -14,6 +14,11 @@ public class FinSalaEvent : TrackerEvent
     // Atributos del evento
     int roomId;
 
+    public FinSalaEvent(int rId) : base("FinSala")
+    {
+        roomId = rId;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {

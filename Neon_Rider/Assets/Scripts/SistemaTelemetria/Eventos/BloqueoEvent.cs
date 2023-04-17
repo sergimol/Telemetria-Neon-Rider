@@ -14,6 +14,11 @@ public class BloqueoEvent : TrackerEvent
     // Atributos del evento
     Vector2 pos;
 
+    public BloqueoEvent(Vector2 p) : base("Bloqueo")
+    {
+        pos = p;
+    }
+
     // Serializacion en JSON
     public override string toJSON()
     {

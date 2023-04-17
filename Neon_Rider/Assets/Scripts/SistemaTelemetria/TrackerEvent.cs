@@ -5,26 +5,16 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using UnityEngine;
-public struct possibleVar
-{
-    public Vector2? pos;
-    public int? enemyId;
-    public int? roomId;
-}
 public class TrackerEvent
 {
     //Variables comunes
     protected String type; 
     protected long timeStamp;
 
-    //Variables distintas según tipo
-    possibleVar pVar;
-
-    public TrackerEvent(String t, possibleVar pV)
+    public TrackerEvent(String t)
     {
         type = t;
         timeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
-        pVar = pV;
     }
     public TrackerEvent()
     {
@@ -40,13 +30,8 @@ public class TrackerEvent
         return timeStamp;
     }
 
-    public possibleVar getVar()
-    {
-        return pVar;
-    }
-
     // SERIALIZADORES
-    virtual public string toJSON()
+    public virtual string toJSON()
     {
         // Atributos comunes a todos los eventos
         string aux = "{\"TimeStamp\": \"" + timeStamp.ToString() + "\", \"SessionId\": \"" +
@@ -54,14 +39,14 @@ public class TrackerEvent
 
         return aux;
     }
-    virtual public string toCSV()
+    public virtual string toCSV()
     {
         // Atributos comunes a todos los eventos
         string aux = "TimeStamp," + timeStamp + "," + "EventType," + type + "," + "SessionId," + Tracker.instance.getSessionId().ToString() + ",";
 
         return aux;
     }
-    virtual public string toXML()
+    public virtual string toXML()
     {
         // Creacion del objeto DataXml
         InicioSalaXML dataXml = new InicioSalaXML();
