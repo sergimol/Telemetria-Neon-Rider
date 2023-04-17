@@ -63,7 +63,6 @@ public class ServerPersistence : IPersistence
         foreach (TrackerEvent e in events)
         {
             string ser = serializerJSON.Serialize(e);
-            Debug.LogWarning(ser);
             await reference.Child("PcId: " + idOrdenador).Child("SessionId: " + Tracker.instance.getSessionId().ToString()).Child(counterEvents.ToString()).SetRawJsonValueAsync(ser.TrimStart('['));
             counterEvents++;
         }
