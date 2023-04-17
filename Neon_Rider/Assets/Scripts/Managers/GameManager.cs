@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.Stop(AudioManager.ESounds.Menu);
                 AudioManager.instance.Play(AudioManager.ESounds.Level1);
                 break;
-            case (5):
+            case (4):
                 AudioManager.instance.Stop(AudioManager.ESounds.Level1);
                 AudioManager.instance.Stop(AudioManager.ESounds.Menu);
                 AudioManager.instance.Play(AudioManager.ESounds.Level2);

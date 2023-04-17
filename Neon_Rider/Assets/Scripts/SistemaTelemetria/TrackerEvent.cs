@@ -12,9 +12,6 @@ public class TrackerEvent
     protected string type; 
     protected long timeStamp;
 
-    [SerializeField]
-    bool trackingEnabled = true;
-
     public TrackerEvent(string t)
     {
         type = t;
