@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 public class TrackerEvent
@@ -46,21 +47,15 @@ public class TrackerEvent
 
         return aux;
     }
-    public virtual string toXML()
+    public virtual string toXML(ref XmlWriter xml_writer, ref StringWriter stringWriter)
     {
-        // Creacion del objeto DataXml
-        InicioSalaXML dataXml = new InicioSalaXML();
-        StringWriter stringWriter = new StringWriter();
-        XmlSerializer serializer = new XmlSerializer(typeof(InicioSalaXML));
+        // Escribir el elemento Evento (Su tipo)
+        xml_writer.WriteStartElement(type);
 
-        // Atributos comunes a todos los eventos
-        dataXml.x_type = type;
-        dataXml.x_timeStamp = timeStamp.ToString();
-        dataXml.x_sessionID = Tracker.instance.getSessionId().ToString();
-
-        // Serializamos con el formato
-        serializer.Serialize(stringWriter, dataXml);
-
+        // Escribimos sus atributos (variables)
+        xml_writer.WriteAttributeString("SessionId", Tracker.instance.getSessionId().ToString());
+        xml_writer.WriteAttributeString("TimeStamp", timeStamp.ToString());
+        
 
         return stringWriter.ToString();
     }

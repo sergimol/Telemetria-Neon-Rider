@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -35,24 +36,15 @@ public class BloqueoEvent : TrackerEvent
         return cadena;
     }
     // Serializacion en XML
-    public override string toXML()
+    public override string toXML(ref XmlWriter xml_writer, ref StringWriter stringWriter)
     {
-        // Creacion del objeto DataXml
-        BloqueoXML dataXml = new BloqueoXML();
-        StringWriter stringWriter = new StringWriter();
-        XmlSerializer serializer = new XmlSerializer(typeof(BloqueoXML));
+        base.toXML(ref xml_writer, ref stringWriter);
+        xml_writer.WriteAttributeString("Pos", pos.ToString());
 
-        // Atributos comunes a todos los eventos
-        dataXml.x_type = type;
-        dataXml.x_timeStamp = timeStamp.ToString();
-        dataXml.x_sessionID = Tracker.instance.getSessionId().ToString();
 
-        // Atributos de evento
-        dataXml.x_pos = pos.ToString();
-
-        // Serializamos con el formato
-        serializer.Serialize(stringWriter, dataXml);
-
+        // Cerramos el evento
+        xml_writer.WriteEndElement();
+        xml_writer.Flush();
 
         return stringWriter.ToString();
     }

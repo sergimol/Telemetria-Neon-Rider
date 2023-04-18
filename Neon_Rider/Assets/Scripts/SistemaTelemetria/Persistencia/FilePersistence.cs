@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Xml;
+
 public class FilePersistence : IPersistence
 {
     List<TrackerEvent> eventsBuff;
@@ -47,15 +49,15 @@ public class FilePersistence : IPersistence
             serializerJSON = GetComponent<JSONSerializer>();
             jsonStream = new StreamWriter(ruta_base + ruta_json + id + ".json");
         }
-        if (serializeInXML)
-        {
-            serializerXML = GetComponent<XMLSerializer>();
-            xmlStream = new StreamWriter(ruta_base + ruta_xml + id + ".xml");
-        }
         if (serializeInCSV)
         {
             serializerCSV = GetComponent<CSVSerializer>();
             csvStream = new StreamWriter(ruta_base + ruta_csv + id + ".csv");
+        }
+        if (serializeInXML)
+        {
+            serializerXML = GetComponent<XMLSerializer>();
+            xmlStream = new StreamWriter(ruta_base + ruta_xml + id + ".xml");
         }
     }
 
