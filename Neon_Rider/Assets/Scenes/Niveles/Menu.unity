@@ -819,7 +819,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 149911186531559618}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375708051}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 492fa0abf002f174fa54602b54d1332e, type: 3}
@@ -959,25 +959,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233433322}
   m_CullTransparentMesh: 0
---- !u!1 &1375708051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6558965507926781986, guid: c0a32ff600d63ae40a78a504f99cf08c,
-    type: 3}
-  m_PrefabInstance: {fileID: 149911186531559618}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1375708058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375708051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b40ecb00d3c975489a107fe44767517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  url: https://neon-rider-ae6c3-default-rtdb.europe-west1.firebasedatabase.app/
 --- !u!1 &1392538871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,8 +2305,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
         type: 3}
+      propertyPath: eventConfig.Array.data[2].eventName
+      value: InicioSala
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[3].eventName
+      value: FinSala
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[4].eventName
+      value: InicioNivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[5].eventName
+      value: FinNivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[6].eventName
+      value: MuerteJugador
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[6].isTracked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[7].eventName
+      value: MuerteEnemigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[9].eventName
+      value: PosicionJugador
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
       propertyPath: eventConfig.Array.data[9].isTracked
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
+        type: 3}
+      propertyPath: eventConfig.Array.data[10].eventName
+      value: PosicionNPC
       objectReference: {fileID: 0}
     - target: {fileID: 7551398983740201068, guid: c0a32ff600d63ae40a78a504f99cf08c,
         type: 3}
