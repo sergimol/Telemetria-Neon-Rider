@@ -42,7 +42,7 @@ public class BloqueoEvent : TrackerEvent
         xml_writer.WriteAttributeString("Pos", pos.ToString());
 
 
-        // Cerramos el evento
+        // Cerramos el evento y volcamos
         xml_writer.WriteEndElement();
         xml_writer.Flush();
 

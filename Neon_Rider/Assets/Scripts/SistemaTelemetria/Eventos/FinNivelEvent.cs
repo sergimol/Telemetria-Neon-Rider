@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class FinNivelEvent : TrackerEvent
 {
@@ -30,25 +32,14 @@ public class FinNivelEvent : TrackerEvent
         return cadena;
     }
     // Serializacion en XML
-    public override string toXML()
+    public override string toXML(ref XmlWriter xml_writer, ref StringWriter stringWriter)
     {
-        // Creacion del objeto DataXml
-        NivelXML dataXml = new NivelXML();
-        StringWriter stringWriter = new StringWriter();
-        XmlSerializer serializer = new XmlSerializer(typeof(NivelXML));
+        base.toXML(ref xml_writer, ref stringWriter);
+        xml_writer.WriteAttributeString("LevelId", levelId.ToString());
 
-        // Atributos comunes a todos los eventos
-        dataXml.x_type = type;
-        dataXml.x_timeStamp = timeStamp.ToString();
-        dataXml.x_sessionID = Tracker.instance.getSessionId().ToString();
-
-        // Atributos de evento
-        dataXml.x_levelId = levelId.ToString();
-
-        // Serializamos con el formato
-        serializer.Serialize(stringWriter, dataXml);
-
-
+        // Cerramos el evento y volcamos
+        xml_writer.WriteEndElement();
+        xml_writer.Flush();
         return stringWriter.ToString();
     }
 }
