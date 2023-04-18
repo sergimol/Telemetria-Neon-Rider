@@ -32,7 +32,7 @@ public class Ralentizador : MonoBehaviour
             if (time <= 0)
             { // Explosión
                 AudioManager.instance.Play(AudioManager.ESounds.RalentExp);
-                Debug.Log("Exploto");
+                //Debug.Log("Exploto");
                 if (SceneManager.GetSceneByName("Escena de Prueba 3") == SceneManager.GetActiveScene())
                     Instantiate(ralentPRUEBA);
                 Destroy(this.gameObject);

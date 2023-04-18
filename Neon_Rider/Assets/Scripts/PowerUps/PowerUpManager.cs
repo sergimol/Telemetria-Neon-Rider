@@ -150,7 +150,7 @@ public class PowerUpManager : MonoBehaviour
                 // Desactiva el power-up activo y su indicador
                 if (currentPowerUp != null)
                 {
-                    Debug.Log("Desactivo");
+                    //Debug.Log("Desactivo");
                     currentPowerUp.enabled = false;
                     image.enabled = false;
                     activo = false;

@@ -58,20 +58,20 @@ public class Bloqueo : MonoBehaviour
                 }
                 activPow.AddToCont();
                 Tracker.instance.AddEvent(new BloqueoEvent(transform.position)) ;
-                Debug.Log("Parryada");
+                //Debug.Log("Parryada");
             }
             if (collision.GetComponent<PrestBullet>() != null && purple.enabled == false) 
             {
                 AudioManager.instance.Play(AudioManager.ESounds.Bloqueo3);
                 Destroy(collision.gameObject);
-                Debug.Log("BALA DESTRUIDA PREST");
+                //Debug.Log("BALA DESTRUIDA PREST");
 
             }
             if (collision.GetComponent<TurretBullet>() != null && purple.enabled == false) 
             {
                 AudioManager.instance.Play(AudioManager.ESounds.Bloqueo3);
                 Destroy(collision.gameObject);
-                Debug.Log("BALA DESTRUIDA TURRET");
+                //Debug.Log("BALA DESTRUIDA TURRET");
 
             }
         }

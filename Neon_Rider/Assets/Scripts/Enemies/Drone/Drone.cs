@@ -30,7 +30,7 @@ public class Drone : MonoBehaviour
                 time -= Time.deltaTime;
             if (time <= 0)
             {
-                Debug.Log("Pum");
+                //Debug.Log("Pum");
                 Instantiate(explosion, transform.position, Quaternion.identity, null); // Al explotar hace aparecer un gameObject que representa la explosión
                 AudioManager.instance.Play(AudioManager.ESounds.DronExp);
                 Destroy(this.gameObject);
