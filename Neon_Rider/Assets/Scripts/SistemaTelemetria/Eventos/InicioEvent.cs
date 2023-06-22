@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using UnityEngine;
 
 
 public class InicioEvent : TrackerEvent
 {
-    public InicioEvent() : base("Inicio")
+    public InicioEvent() : base(typeof(InicioEvent).Name)
     {
     }
 

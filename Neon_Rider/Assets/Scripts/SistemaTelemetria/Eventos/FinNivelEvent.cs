@@ -11,7 +11,7 @@ public class FinNivelEvent : TrackerEvent
     // Atributos del evento
     int levelId;
 
-    public FinNivelEvent(int rId) : base("FinNivel")
+    public FinNivelEvent(int rId) : base(typeof(FinNivelEvent).Name)
     {
         levelId = rId;
     }
@@ -28,7 +28,7 @@ public class FinNivelEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "LevelID," + levelId.ToString() + ",";
+        cadena += "," + levelId.ToString();
         return cadena;
     }
     // Serializacion en XML

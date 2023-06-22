@@ -2,82 +2,102 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using UnityEngine.Analytics;
 
-public class Tracker : MonoBehaviour
+public class Tracker
 {
-    public static Tracker instance = null;
+    private static Tracker instance = null;
     long sessionId;
 
-    [SerializeField]    //Espaciado entre posts
+    //Espaciado entre posts
     float timeBetweenPosts;
     float tSinceLastPost = 0;
 
-    TrackerConfig config;
     FilePersistence filePersistence;
-    [SerializeField] bool filePers = true;
-    ServerPersistence serverPersistence;
-    [SerializeField] bool serverPers = true;
+    bool filePers = true;
+    //ServerPersistence serverPersistence;
+    //bool serverPers = true;
+    // Diccionario para comprobar rápidamente si debe trackearse un evento durante ejecución
+    Dictionary<string, bool> eventsTracked = new Dictionary<string, bool>();
 
-    void Awake()
+    private long timeLastUpdate;
+    private Tracker()
     {
-        if (instance == null)
+    }
+
+    public static Tracker Instance
+    {
+        get
         {
-            instance = this;
-            instance.Init();
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
+            if (instance == null) { 
+                instance = new Tracker();
+            }
+            return instance;
         }
     }
 
-    private void Init()
+    public void Init(long id)
     {
-        config = GetComponent<TrackerConfig>();
-        filePersistence = GetComponent<FilePersistence>();
-        serverPersistence = GetComponent<ServerPersistence>();
+        sessionId = id;
+        //config = GetComponent<TrackerConfig>();
+        filePersistence = new FilePersistence(true, true, true);
+        //serverPersistence = new ServerPersistence();
 
-        sessionId = AnalyticsSessionInfo.sessionId;
-    }
-    private void Start()
-    {
+        Type type = typeof(InicioEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(FinEvent);
+        eventsTracked.Add(type.Name, true);
+        ///////////////////////////////
+        type = typeof(BloqueoEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(FinNivelEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(FinSalaEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(InicioNivelEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(InicioSalaEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(MuerteEnemigoEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(MuerteJugadorEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(PosicionJugadorEvent);
+        eventsTracked.Add(type.Name, true);
+        type = typeof(PosicionNPCEvent);
+        eventsTracked.Add(type.Name, true);
         AddEvent(new InicioEvent());
     }
 
-    private void Update()
+    public void Update()
     {
+        long time = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         if (tSinceLastPost > timeBetweenPosts)
         {
             if (filePers) filePersistence.Flush();
-            if (serverPers) serverPersistence.Flush();
+            //if (serverPers) serverPersistence.Flush();
             tSinceLastPost = 0;
         }
         else
-            tSinceLastPost += Time.deltaTime;
+            tSinceLastPost += (time - timeLastUpdate);
+        timeLastUpdate = time;
     }
 
-    private void OnDestroy()
+    public void Release()
     {
         if (instance == this)
         {
             AddEvent(new FinEvent());
-            if (filePers) filePersistence.Flush();
-            if (serverPers) serverPersistence.Flush();
+            if (filePers) filePersistence.Release();
+            //if (serverPers) serverPersistence.Release();
         }
     }
 
     public void AddEvent(TrackerEvent e)
     {
-        string t = e.GetEventType();
-        if (!config.eventsTracked.ContainsKey(t))
-            Debug.Log("El evento " + t + " no se encuentra en la lista de eventos");
-        else if (config.eventsTracked[t])
+        if (eventsTracked[e.GetType().Name])
         {
             if (filePers) filePersistence.Send(e);
-            if (serverPers) serverPersistence.Send(e);
+            //if (serverPers) serverPersistence.Send(e);
         }
     }
 

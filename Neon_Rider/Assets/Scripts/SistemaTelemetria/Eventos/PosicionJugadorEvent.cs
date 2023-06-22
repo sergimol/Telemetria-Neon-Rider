@@ -15,7 +15,7 @@ public class PosicionJugadorEvent : TrackerEvent
     // Atributos del evento
     Vector2 pos;
 
-    public PosicionJugadorEvent(Vector2 p) : base("PosicionJugador")
+    public PosicionJugadorEvent(Vector2 p) : base(typeof(PosicionJugadorEvent).Name)
     {
         pos = p;
     }
@@ -32,7 +32,7 @@ public class PosicionJugadorEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "Pos," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"" + ",";
+        cadena += "," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"";
         return cadena;
     }
 

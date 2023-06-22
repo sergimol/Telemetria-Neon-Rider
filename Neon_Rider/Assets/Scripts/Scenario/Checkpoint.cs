@@ -16,9 +16,9 @@ public class Checkpoint : MonoBehaviour
             if (deadVal > GameManager.instance.deadVal)
             {
                 if (!isFirst)
-                    Tracker.instance.AddEvent(new FinSalaEvent(deadVal));
+                    Tracker.Instance.AddEvent(new FinSalaEvent(deadVal));
                 if (!isLast)
-                    Tracker.instance.AddEvent(new InicioSalaEvent(deadVal+1));
+                    Tracker.Instance.AddEvent(new InicioSalaEvent(deadVal+1));
                 GameManager.instance.deadVal = deadVal;
             }
         }

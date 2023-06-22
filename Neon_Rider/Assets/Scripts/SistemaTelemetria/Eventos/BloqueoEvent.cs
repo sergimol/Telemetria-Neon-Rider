@@ -15,7 +15,7 @@ public class BloqueoEvent : TrackerEvent
     // Atributos del evento
     Vector2 pos;
 
-    public BloqueoEvent(Vector2 p) : base("Bloqueo")
+    public BloqueoEvent(Vector2 p) : base(typeof(BloqueoEvent).Name)
     {
         pos = p;
     }
@@ -32,7 +32,7 @@ public class BloqueoEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "Pos," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"" + ",";
+        cadena += "," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"";
         return cadena;
     }
     // Serializacion en XML

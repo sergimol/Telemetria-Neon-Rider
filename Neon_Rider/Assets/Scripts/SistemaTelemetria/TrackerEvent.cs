@@ -5,7 +5,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using UnityEngine;
 
 public class TrackerEvent
 {
@@ -37,14 +36,14 @@ public class TrackerEvent
     {
         // Atributos comunes a todos los eventos
         string aux = "{\"TimeStamp\": \"" + timeStamp.ToString() + "\", \"SessionId\": \"" +
-            Tracker.instance.getSessionId().ToString() + "\", \"EventType\": \"" + type + "\"";
+            Tracker.Instance.getSessionId().ToString() + "\", \"EventType\": \"" + type + "\"";
 
         return aux;
     }
     public virtual string toCSV()
     {
         // Atributos comunes a todos los eventos
-        string aux = "TimeStamp," + timeStamp + "," + "EventType," + type + "," + "SessionId," + Tracker.instance.getSessionId().ToString() + ",";
+        string aux = timeStamp + "," + type + "," + Tracker.Instance.getSessionId().ToString();
 
         return aux;
     }
@@ -54,7 +53,7 @@ public class TrackerEvent
         xml_writer.WriteStartElement(type);
 
         // Escribimos sus atributos (variables)
-        xml_writer.WriteAttributeString("SessionId", Tracker.instance.getSessionId().ToString());
+        xml_writer.WriteAttributeString("SessionId", Tracker.Instance.getSessionId().ToString());
         xml_writer.WriteAttributeString("TimeStamp", timeStamp.ToString());
         
 

@@ -10,6 +10,6 @@ public class EndLevelTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerController>() != null)
-            Tracker.instance.AddEvent(new FinNivelEvent(level));
+            Tracker.Instance.AddEvent(new FinNivelEvent(level));
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Xml;
 
@@ -8,12 +7,9 @@ public class FilePersistence : IPersistence
 {
     List<TrackerEvent> eventsBuff;
 
-    [SerializeField]
-    bool serializeInJSON = true;
-    [SerializeField]
-    bool serializeInXML = true;
-    [SerializeField]
-    bool serializeInCSV = true;
+    bool serializeInJSON;
+    bool serializeInXML;
+    bool serializeInCSV;
 
     JSONSerializer serializerJSON = null;   //JSON
     StreamWriter jsonStream = null;
@@ -29,10 +25,10 @@ public class FilePersistence : IPersistence
     string ruta_xml = "XML\\";
     string ruta_csv = "CSV\\";
 
-    private void Start()
+    public FilePersistence(bool inJSON, bool inCSV, bool inXML)
     {
         eventsBuff = new();
-        string id = Tracker.instance.getSessionId().ToString();
+        string id = Tracker.Instance.getSessionId().ToString();
 
         // Crear carpetas del tracker
         if (!Directory.Exists(ruta_base))
@@ -44,29 +40,36 @@ public class FilePersistence : IPersistence
         if (!Directory.Exists(ruta_base + ruta_csv))
             Directory.CreateDirectory(ruta_base + ruta_csv);
 
-        if (serializeInJSON)
+        serializeInJSON = inJSON;
+        if (inJSON)
         {
-            serializerJSON = GetComponent<JSONSerializer>();
+            serializerJSON = new JSONSerializer();
             jsonStream = new StreamWriter(ruta_base + ruta_json + id + ".json");
         }
-        if (serializeInCSV)
+
+        serializeInCSV = inCSV;
+        if (inCSV)
         {
-            serializerCSV = GetComponent<CSVSerializer>();
+            serializerCSV = new CSVSerializer();
             csvStream = new StreamWriter(ruta_base + ruta_csv + id + ".csv");
         }
-        if (serializeInXML)
+
+        serializeInXML = inXML;
+        if (inXML)
         {
-            serializerXML = GetComponent<XMLSerializer>();
+            serializerXML = new XMLSerializer();
             xmlStream = new StreamWriter(ruta_base + ruta_xml + id + ".xml");
         }
     }
 
-    private void OnDestroy()
+    public override void Release()
     {
+        Flush();
         if (jsonStream != null) jsonStream.Close();
         if (xmlStream != null) xmlStream.Close();
         if (csvStream != null) csvStream.Close();
     }
+
     public override void Send(TrackerEvent e)
     {
         eventsBuff.Add(e);

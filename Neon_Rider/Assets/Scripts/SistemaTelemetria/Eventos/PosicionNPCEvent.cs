@@ -16,7 +16,7 @@ public class PosicionNPCEvent : TrackerEvent
     Vector2 pos;
     int npcId;
 
-    public PosicionNPCEvent(Vector2 p, int id): base("PosicionNPC")
+    public PosicionNPCEvent(Vector2 p, int id): base(typeof(PosicionNPCEvent).Name)
     {
         pos = p;
         npcId = id;
@@ -35,7 +35,7 @@ public class PosicionNPCEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "Pos," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"" + ",";
+        cadena += "," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"";
         return cadena;
     }
 

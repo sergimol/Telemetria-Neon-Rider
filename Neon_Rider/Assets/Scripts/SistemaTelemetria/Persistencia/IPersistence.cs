@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class IPersistence : MonoBehaviour
+public abstract class IPersistence
 {
     public abstract void Send(TrackerEvent e);
+    public abstract void Release();
 
     public abstract void Flush();
 }

@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-
 
 public class XMLSerializer : ISerializer
 {
@@ -14,7 +12,7 @@ public class XMLSerializer : ISerializer
     StringWriter xml_stringWriter = null;
     XmlWriter xml_writer = null;
 
-    private void Start()
+    public XMLSerializer()
     {
         // Configuracion del formateador 
         xml_settings = new XmlWriterSettings();

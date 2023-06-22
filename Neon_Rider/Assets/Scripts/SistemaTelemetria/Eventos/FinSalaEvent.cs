@@ -16,7 +16,7 @@ public class FinSalaEvent : TrackerEvent
     // Atributos del evento
     int roomId;
 
-    public FinSalaEvent(int rId) : base("FinSala")
+    public FinSalaEvent(int rId) : base(typeof(FinSalaEvent).Name)
     {
         roomId = rId;
     }
@@ -33,7 +33,7 @@ public class FinSalaEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "RoomID," + roomId.ToString() + ",";
+        cadena += "," + roomId.ToString();
         return cadena;
     }
     // Serializacion en XML

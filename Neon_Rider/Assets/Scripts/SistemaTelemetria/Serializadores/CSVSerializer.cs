@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using UnityEngine;
 
 public class CSVSerializer : ISerializer
 {

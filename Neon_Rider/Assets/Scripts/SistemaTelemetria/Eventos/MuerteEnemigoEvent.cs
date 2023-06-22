@@ -17,7 +17,7 @@ public class MuerteEnemigoEvent : TrackerEvent
     Vector2 pos;
     int enemyId;
 
-    public MuerteEnemigoEvent(Vector2 p, int enId) : base("MuerteEnemigo")
+    public MuerteEnemigoEvent(Vector2 p, int enId) : base(typeof(MuerteEnemigoEvent).Name)
     {
         pos = p;
         enemyId = enId;
@@ -36,8 +36,8 @@ public class MuerteEnemigoEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "EnemyID," + enemyId.ToString() + ",";
-        cadena += "Pos," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"" + ",";
+        cadena += "," + enemyId.ToString();
+        cadena += "," + "\"" + pos.x.ToString() + "\"" + "," + "\"" + pos.y.ToString() + "\"";
         return cadena;
     }
 

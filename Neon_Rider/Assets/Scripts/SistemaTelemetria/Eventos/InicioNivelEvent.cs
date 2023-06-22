@@ -15,7 +15,7 @@ public class InicioNivelEvent : TrackerEvent
     // Atributos del evento
     int levelId;
 
-    public InicioNivelEvent(int rId) : base("InicioNivel")
+    public InicioNivelEvent(int rId) : base(typeof(InicioNivelEvent).Name)
     {
         levelId = rId;
     }
@@ -32,7 +32,7 @@ public class InicioNivelEvent : TrackerEvent
     public override string toCSV()
     {
         string cadena = base.toCSV();
-        cadena += "LevelID," + levelId.ToString() + ",";
+        cadena += "," + levelId.ToString();
         return cadena;
     }
     // Serializacion en XML
