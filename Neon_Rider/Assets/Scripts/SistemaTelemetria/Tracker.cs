@@ -38,33 +38,10 @@ public class Tracker
     public void Init(long id)
     {
         sessionId = id;
-        //config = GetComponent<TrackerConfig>();
         filePersistence = new FilePersistence(true, true, true);
-        //serverPersistence = new ServerPersistence();
 
-        Type type = typeof(InicioEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(FinEvent);
-        eventsTracked.Add(type.Name, true);
-        ///////////////////////////////
-        type = typeof(BloqueoEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(FinNivelEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(FinSalaEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(InicioNivelEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(InicioSalaEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(MuerteEnemigoEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(MuerteJugadorEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(PosicionJugadorEvent);
-        eventsTracked.Add(type.Name, true);
-        type = typeof(PosicionNPCEvent);
-        eventsTracked.Add(type.Name, true);
+        AddTrackableEvent<InicioEvent>(true);
+        AddTrackableEvent<FinEvent>(true);
         AddEvent(new InicioEvent());
     }
 
@@ -94,15 +71,36 @@ public class Tracker
 
     public void AddEvent(TrackerEvent e)
     {
-        if (eventsTracked[e.GetType().Name])
-        {
-            if (filePers) filePersistence.Send(e);
-            //if (serverPers) serverPersistence.Send(e);
-        }
+        string eventType = e.GetType().Name;
+        if (!eventsTracked.ContainsKey(eventType) || !eventsTracked[eventType])
+            return;
+ 
+        if (filePers) filePersistence.Send(e);
+        //if (serverPers) serverPersistence.Send(e);
     }
 
-    public long getSessionId()
+    public long GetSessionId()
     {
         return sessionId;
+    }
+
+    public void AddTrackableEvent<T>(bool track)
+    {
+        if (!typeof(T).IsSubclassOf(typeof(TrackerEvent)))
+            return;
+
+        Type type = typeof(T);
+        if (!eventsTracked.ContainsKey(type.Name))
+            eventsTracked.Add(type.Name, track);
+    }
+
+    public void ChangeTrackableState<T>(bool track)
+    {
+        if (!typeof(T).IsSubclassOf(typeof(TrackerEvent)))
+            return;
+
+        Type type = typeof(T);
+        if (eventsTracked.ContainsKey(type.Name))
+            eventsTracked[type.Name] = track;
     }
 }

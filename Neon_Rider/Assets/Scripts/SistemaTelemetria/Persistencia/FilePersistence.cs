@@ -28,7 +28,7 @@ public class FilePersistence : IPersistence
     public FilePersistence(bool inJSON, bool inCSV, bool inXML)
     {
         eventsBuff = new();
-        string id = Tracker.Instance.getSessionId().ToString();
+        string id = Tracker.Instance.GetSessionId().ToString();
 
         // Crear carpetas del tracker
         if (!Directory.Exists(ruta_base))

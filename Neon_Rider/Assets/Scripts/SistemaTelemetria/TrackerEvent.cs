@@ -36,14 +36,14 @@ public class TrackerEvent
     {
         // Atributos comunes a todos los eventos
         string aux = "{\"TimeStamp\": \"" + timeStamp.ToString() + "\", \"SessionId\": \"" +
-            Tracker.Instance.getSessionId().ToString() + "\", \"EventType\": \"" + type + "\"";
+            Tracker.Instance.GetSessionId().ToString() + "\", \"EventType\": \"" + type + "\"";
 
         return aux;
     }
     public virtual string toCSV()
     {
         // Atributos comunes a todos los eventos
-        string aux = timeStamp + "," + type + "," + Tracker.Instance.getSessionId().ToString();
+        string aux = timeStamp + "," + type + "," + Tracker.Instance.GetSessionId().ToString();
 
         return aux;
     }
@@ -53,7 +53,7 @@ public class TrackerEvent
         xml_writer.WriteStartElement(type);
 
         // Escribimos sus atributos (variables)
-        xml_writer.WriteAttributeString("SessionId", Tracker.Instance.getSessionId().ToString());
+        xml_writer.WriteAttributeString("SessionId", Tracker.Instance.GetSessionId().ToString());
         xml_writer.WriteAttributeString("TimeStamp", timeStamp.ToString());
         
 
